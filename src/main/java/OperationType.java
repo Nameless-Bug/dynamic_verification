@@ -13,6 +13,8 @@ public final class OperationType {
         OPERATIONMAP.put("STRCONTAINS", StaticOperator.STRCONTAINS);
         OPERATIONMAP.put("STARTSWITH", StaticOperator.STARTSWITH);
         OPERATIONMAP.put("ENDSWITH", StaticOperator.ENDSWITH);
+        OPERATIONMAP.put("STREQUALS",StaticOperator.STREQUALS);
+        OPERATIONMAP.put("STREQUALSIC",StaticOperator.STREQUALSIC);
 
         OPERATIONMAP.put("LISTCONTAINS", StaticOperator.LISTCONTAINS);
         OPERATIONMAP.put("SETCONTAINS", StaticOperator.SETCONTAINS);

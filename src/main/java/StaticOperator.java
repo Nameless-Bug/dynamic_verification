@@ -28,6 +28,10 @@ public class StaticOperator {
 
     public static final Compare ENDSWITH = (Object objAttr, Object requirement) -> objAttr.toString().endsWith(requirement.toString());
 
+    public static final Compare STREQUALS = (Object objAttr, Object requirement) -> objAttr.toString().equals(requirement.toString());
+
+    public static final Compare STREQUALSIC = (Object objAttr, Object requirement) -> objAttr.toString().equalsIgnoreCase(requirement.toString());
+
     public static final Compare LISTCONTAINS = (Object objAttr, Object requirement) -> {
         assert objAttr instanceof List;
         return ((List<?>) objAttr).contains(requirement);

@@ -1,1 +1,1 @@
-{"operator": "LISTCONTAINS", "attribute": "certificate", "rule": "driver license", "action": "drive"}
+{"operator": "LISTCONTAINS", "attribute": "certificate", "rule": "driver license", "action": "drive", "param": null}

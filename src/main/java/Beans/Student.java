@@ -41,8 +41,13 @@ public class Student {
         System.out.println("Students with driver license are allowed to drive.");
     }
 
-    Homework doHomework(){
-        return new Homework();
+    Homework doHomework(Integer math, String history){
+        System.out.println("method with parameters");
+        return new Homework(math, history);
     }
 
+    Homework doHomework(){
+        System.out.println("method with no parameters");
+        return new Homework(1, "history");
+    }
 }

@@ -18,12 +18,20 @@ public class DynamicVerification {
 
         Class<?> cls = obj.getClass();
 
-        if(OperationType.OPERATIONMAP.containsKey(vr.operator.toUpperCase())) {
-            Field field = cls.getDeclaredField(vr.attribute);
-            field.setAccessible(true);
-            if (DynamicVerification.check(field.get(obj),
-                    vr.rule,
-                    OperationType.OPERATIONMAP.get(vr.operator.toUpperCase()))) {
+        Field field = cls.getDeclaredField(vr.attribute);
+        field.setAccessible(true);
+        if (DynamicVerification.check(field.get(obj),
+                vr.rule,
+                OperationType.OPERATIONMAP.get(vr.operator.toUpperCase()))) {
+            if(Optional.ofNullable(vr.param).isPresent()){
+                Class<?> []argsCls = new Class[vr.param.length];
+                for(int i = 0; i < vr.param.length; i++){
+                    argsCls[i] = vr.param[i].getClass();
+                }
+                Method m = cls.getDeclaredMethod(vr.action, argsCls);
+                m.setAccessible(true);
+                return Optional.ofNullable(m.invoke(obj, vr.param));
+            }else{
                 Method m = cls.getDeclaredMethod(vr.action);
                 m.setAccessible(true);
                 return Optional.ofNullable(m.invoke(obj));
